@@ -73,6 +73,9 @@ public class Empresa {
         if (this.cuit != other.cuit) {
             return false;
         }
+        if(!Objects.equals(this.razonSocial, other.razonSocial)){
+            return false;
+        }
         return true;
     }
         

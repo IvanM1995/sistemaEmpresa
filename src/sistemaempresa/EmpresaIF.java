@@ -34,7 +34,7 @@ public class EmpresaIF extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jtRSocial = new javax.swing.JTextField();
         jtCuit = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jtBuscarEmpresa = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -48,9 +48,9 @@ public class EmpresaIF extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jtSueldo = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jtGuardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jtBuscar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -78,8 +78,8 @@ public class EmpresaIF extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setText("CUIT");
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos netbeans/empresas.png"))); // NOI18N
-        jButton3.setText("Crear empresa");
+        jtBuscarEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos netbeans/empresas.png"))); // NOI18N
+        jtBuscarEmpresa.setText("Crear empresa");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -97,7 +97,7 @@ public class EmpresaIF extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(jtBuscarEmpresa)
                 .addGap(61, 61, 61))
         );
         jPanel2Layout.setVerticalGroup(
@@ -112,7 +112,7 @@ public class EmpresaIF extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(jtCuit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtBuscarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
         );
 
@@ -137,14 +137,15 @@ public class EmpresaIF extends javax.swing.JFrame {
         jLabel7.setText("Empresa");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Administrativo", "Operario", "Repositor" }));
+        jComboBox1.setSelectedIndex(-1);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mondelez", "Arcor", "Niza", "Glucobil" }));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos netbeans/agregar (1).png"))); // NOI18N
-        jButton1.setText("Guardar");
+        jtGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos netbeans/agregar (1).png"))); // NOI18N
+        jtGuardar.setText("Guardar");
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos netbeans/MostrarEmpleados.png"))); // NOI18N
-        jButton2.setText(" Buscar empleado");
+        jtBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos netbeans/MostrarEmpleados.png"))); // NOI18N
+        jtBuscar.setText(" Buscar empleado");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,7 +170,7 @@ public class EmpresaIF extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel2))
-                            .addComponent(jButton1))
+                            .addComponent(jtGuardar))
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -181,9 +182,7 @@ public class EmpresaIF extends javax.swing.JFrame {
                                     .addComponent(jtSueldo)
                                     .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jComboBox1, 0, 124, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)))
+                            .addComponent(jtBuscar))
                         .addContainerGap(17, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -217,8 +216,8 @@ public class EmpresaIF extends javax.swing.JFrame {
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jtGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -316,9 +315,6 @@ public class EmpresaIF extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -339,8 +335,11 @@ public class EmpresaIF extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jtApellido;
+    private javax.swing.JButton jtBuscar;
+    private javax.swing.JButton jtBuscarEmpresa;
     private javax.swing.JTextField jtCuit;
     private javax.swing.JTextField jtDocumento;
+    private javax.swing.JButton jtGuardar;
     private javax.swing.JTextField jtNombre;
     private javax.swing.JTextField jtRSocial;
     private javax.swing.JTextField jtSueldo;

@@ -21,8 +21,8 @@ public class Empresa {
         this.empleados = new ArrayList<>();
     }
     
-    public void agregarEmpleado(Empleado emp) {
-        empleados.add(emp);
+    public void agregarEmpleado(Empleado empleado) {
+        empleados.add(empleado);
     }
     
     public String mostrarEmpleados() {

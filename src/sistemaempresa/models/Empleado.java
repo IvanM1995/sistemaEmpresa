@@ -11,11 +11,12 @@ package sistemaempresa.models;
  */
 public class Empleado {
     private double dni;
-    private String nombreApellido, categoria;
+    private String nombreApellido;
+    private Categoria categoria;
     private double sueldo;
     private Empresa empresa;
 
-    public Empleado(int dni, String nombreApellido, String categoria, double sueldo, Empresa empresa) {
+    public Empleado(int dni, String nombreApellido, Categoria categoria, double sueldo, Empresa empresa) {
         this.dni = dni;
         this.nombreApellido = nombreApellido;
         this.categoria = categoria;
@@ -31,7 +32,7 @@ public class Empleado {
         return nombreApellido;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
@@ -71,12 +72,6 @@ public class Empleado {
     @Override
     public String toString() {
         return nombreApellido;
-    }
-
-    private static class Empresa {
-
-        public Empresa() {
-        }
     }
     
 }

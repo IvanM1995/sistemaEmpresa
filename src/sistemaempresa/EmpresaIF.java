@@ -4,13 +4,17 @@
  * and open the template in the editor.
  */
 package sistemaempresa;
-
+import java.util.HashSet;
+import javax.swing.JOptionPane;
+import sistemaempresa.models.Categoria;
+import sistemaempresa.models.Empleado;
+import sistemaempresa.models.Empresa;
 /**
  *
  * @author Ivan
  */
 public class EmpresaIF extends javax.swing.JFrame {
-
+    public static HashSet<Empresa> empresas = new HashSet<>();
     /**
      * Creates new form EmpresaIF
      */
@@ -34,23 +38,21 @@ public class EmpresaIF extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jtRSocial = new javax.swing.JTextField();
         jtCuit = new javax.swing.JTextField();
-        jtBuscarEmpresa = new javax.swing.JButton();
+        jtCrearEmpresa = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jtDocumento = new javax.swing.JTextField();
         jtNombre = new javax.swing.JTextField();
-        jtApellido = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcCategoria = new javax.swing.JComboBox<>();
         jtSueldo = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jtGuardar = new javax.swing.JButton();
+        jcEmpresa = new javax.swing.JComboBox<>();
+        jbGuardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jtBuscar = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -78,27 +80,33 @@ public class EmpresaIF extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setText("CUIT");
 
-        jtBuscarEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos netbeans/empresas.png"))); // NOI18N
-        jtBuscarEmpresa.setText("Crear empresa");
+        jtCrearEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos netbeans/empresas.png"))); // NOI18N
+        jtCrearEmpresa.setText("Crear empresa");
+        jtCrearEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtCrearEmpresaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jtCuit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtRSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtCuit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtRSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(jtCrearEmpresa)))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jtBuscarEmpresa)
-                .addGap(61, 61, 61))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,9 +119,9 @@ public class EmpresaIF extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jtCuit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jtBuscarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addGap(18, 18, 18)
+                .addComponent(jtCrearEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Ingrese Datos", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Dialog", 3, 12))); // NOI18N
@@ -122,10 +130,7 @@ public class EmpresaIF extends javax.swing.JFrame {
         jLabel2.setText("Num. Documento");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel3.setText("Nombre");
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel4.setText("Apellido");
+        jLabel3.setText("Nombre y apellido");
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setText("Categoria");
@@ -136,16 +141,37 @@ public class EmpresaIF extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel7.setText("Empresa");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Administrativo", "Operario", "Repositor" }));
-        jComboBox1.setSelectedIndex(-1);
+        jcCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new Categoria[] { Categoria.Administrativo, Categoria.Gerente, Categoria.Operario, Categoria.Repositor }));
+        jcCategoria.setSelectedIndex(-1);
+        jcCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcCategoriaActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mondelez", "Arcor", "Niza", "Glucobil" }));
+        jcEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcEmpresaActionPerformed(evt);
+            }
+        });
 
-        jtGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos netbeans/agregar (1).png"))); // NOI18N
-        jtGuardar.setText("Guardar");
+        jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos netbeans/agregar (1).png"))); // NOI18N
+        jbGuardar.setText("Guardar");
+        jbGuardar.setEnabled(false);
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
-        jtBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos netbeans/MostrarEmpleados.png"))); // NOI18N
-        jtBuscar.setText(" Buscar empleado");
+        jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos netbeans/MostrarEmpleados.png"))); // NOI18N
+        jbBuscar.setText(" Buscar empleado");
+        jbBuscar.setEnabled(false);
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -159,31 +185,24 @@ public class EmpresaIF extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel2))
-                            .addComponent(jtGuardar))
-                        .addGap(6, 6, 6)
+                            .addComponent(jbGuardar)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtDocumento)
-                                    .addComponent(jtNombre)
-                                    .addComponent(jtApellido)
-                                    .addComponent(jtSueldo)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, 0, 124, Short.MAX_VALUE)))
-                            .addComponent(jtBuscar))
-                        .addContainerGap(17, Short.MAX_VALUE))))
+                                .addGap(18, 18, 18)
+                                .addComponent(jbBuscar))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jtNombre)
+                                .addComponent(jtDocumento, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jcCategoria, 0, 166, Short.MAX_VALUE)
+                                .addComponent(jtSueldo)
+                                .addComponent(jcEmpresa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,24 +219,20 @@ public class EmpresaIF extends javax.swing.JFrame {
                     .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jtSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
+                    .addComponent(jcEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(103, 103, 103)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jbGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -225,19 +240,20 @@ public class EmpresaIF extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanel1.getAccessibleContext().setAccessibleName("Crear empleado");
@@ -278,6 +294,71 @@ public class EmpresaIF extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jcCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcCategoriaActionPerformed
+
+    private void jtCrearEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCrearEmpresaActionPerformed
+        try{
+            
+        String razonSocial = jtRSocial.getText();
+        int cuit = Integer.parseInt(jtCuit.getText());
+        if(razonSocial==null || jtCuit.getText() == null){
+            JOptionPane.showMessageDialog(this, "No deben haber campos en blanco");
+            return;
+        }
+        Empresa empresa = new Empresa(razonSocial, cuit);
+        if(empresas.add(empresa)){
+            JOptionPane.showMessageDialog(this, "Empresa creada exitosamente");
+            limpiarCamposEmpresa();
+            jbGuardar.setEnabled(true);
+            jbBuscar.setEnabled(true);
+            jcEmpresa.addItem(empresa);
+        }else{
+            JOptionPane.showMessageDialog(this, "Ya existe esta empresa");
+        }
+        
+        
+        }catch(NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "Error en el campo de CUIT. Solo se aceptan numeros");
+        }
+        
+    }//GEN-LAST:event_jtCrearEmpresaActionPerformed
+
+    private void jcEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcEmpresaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcEmpresaActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        //int dni, String nombreApellido, String categoria, double sueldo, Empresa empresa
+        try{
+            int dni = Integer.parseInt(jtDocumento.getText());
+            String nombreApellido = jtNombre.getText();
+            Categoria categoria = (Categoria)jcCategoria.getSelectedItem();
+            double sueldo = Double.parseDouble(jtSueldo.getText());
+            Empresa empresa = (Empresa)jcEmpresa.getSelectedItem();
+            if(jtDocumento.getText() == null || nombreApellido == null || jcCategoria.getSelectedIndex() == -1 || jtSueldo.getText() == null ||jcEmpresa.getSelectedIndex() == -1){
+                JOptionPane.showMessageDialog(this, "No deben haber campos vacios");
+                return;
+            }
+            Empleado empleado = new Empleado(dni, nombreApellido, categoria, sueldo, empresa);
+            if (contieneEmpleado(empresa, empleado)){
+                JOptionPane.showMessageDialog(this, "Ya existe un empleado con estos datos");
+            }else{
+                empresa.agregarEmpleado(empleado);
+                JOptionPane.showMessageDialog(this, "Empleado agregado con exito a la empresa "+ empresa.getRazonSocial());
+                limpiarCamposEmpleado();
+            }
+            
+        }catch(NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "Debe ingresar numeros en los campos dni y sueldo");
+        }
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -312,16 +393,35 @@ public class EmpresaIF extends javax.swing.JFrame {
             }
         });
     }
+    public void limpiarCamposEmpresa(){
+        jtRSocial.setText("");
+        jtCuit.setText("");           
+    }
+    public void limpiarCamposEmpleado(){
+        jtDocumento.setText("");
+        jtNombre.setText("");
+        jtSueldo.setText("");
+        jcCategoria.setSelectedIndex(-1);
+        jcEmpresa.setSelectedIndex(-1);
+    }
+    
+    private boolean contieneEmpleado(Empresa empresa, Empleado e) {
+        for (Empleado empleado : empresa.getEmpleados()) {
+            
+            if (empleado.equals(e)) {
+                return true;
+            }
+            
+        }
+        return false;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -334,12 +434,13 @@ public class EmpresaIF extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jtApellido;
-    private javax.swing.JButton jtBuscar;
-    private javax.swing.JButton jtBuscarEmpresa;
+    private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbGuardar;
+    private javax.swing.JComboBox<Categoria> jcCategoria;
+    private javax.swing.JComboBox<Empresa> jcEmpresa;
+    private javax.swing.JButton jtCrearEmpresa;
     private javax.swing.JTextField jtCuit;
     private javax.swing.JTextField jtDocumento;
-    private javax.swing.JButton jtGuardar;
     private javax.swing.JTextField jtNombre;
     private javax.swing.JTextField jtRSocial;
     private javax.swing.JTextField jtSueldo;

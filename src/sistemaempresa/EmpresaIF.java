@@ -330,7 +330,10 @@ public class EmpresaIF extends javax.swing.JFrame {
     }//GEN-LAST:event_jcEmpresaActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        // TODO add your handling code here:
+        Empresa empresa = (Empresa) jcEmpresa.getSelectedItem();
+        
+        JOptionPane.showMessageDialog(this, "Empleados de " + empresa.getRazonSocial().toUpperCase() +
+                ":\n" + empresa.mostrarEmpleados());
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed

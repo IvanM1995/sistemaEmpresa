@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistemaempresa;
+package sistemaempresa.models;
 
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class Empresas {
+public class Empresa {
       
     private String razonSocial;
     private int cuit;
     private ArrayList<Empleado> empleados;
 
-    public Empresas(String razonSocial, int cuit) {
+    public Empresa(String razonSocial, int cuit) {
         this.razonSocial = razonSocial;
         this.cuit = cuit;
         this.empleados = new ArrayList<>();
@@ -51,8 +52,9 @@ public class Empresas {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 53 * hash + this.cuit;
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.razonSocial);
+        hash = 83 * hash + this.cuit;
         return hash;
     }
 
@@ -67,7 +69,7 @@ public class Empresas {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Empresas other = (Empresas) obj;
+        final Empresa other = (Empresa) obj;
         if (this.cuit != other.cuit) {
             return false;
         }

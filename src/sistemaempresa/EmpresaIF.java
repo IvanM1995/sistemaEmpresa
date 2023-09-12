@@ -13,6 +13,8 @@ import sistemaempresa.models.Empresa;
  *
  * @author Ivan
  */
+   
+
 public class EmpresaIF extends javax.swing.JFrame {
     public static HashSet<Empresa> empresas = new HashSet<>();
     /**
@@ -55,7 +57,9 @@ public class EmpresaIF extends javax.swing.JFrame {
         jbBuscar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jmBuscarEmpleado = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jmBuscarEmpresa = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
@@ -142,18 +146,6 @@ public class EmpresaIF extends javax.swing.JFrame {
         jLabel7.setText("Empresa");
 
         jcCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new Categoria[] { Categoria.Administrativo, Categoria.Gerente, Categoria.Operario, Categoria.Repositor }));
-        jcCategoria.setSelectedIndex(-1);
-        jcCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcCategoriaActionPerformed(evt);
-            }
-        });
-
-        jcEmpresa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcEmpresaActionPerformed(evt);
-            }
-        });
 
         jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos netbeans/agregar (1).png"))); // NOI18N
         jbGuardar.setText("Guardar");
@@ -259,9 +251,27 @@ public class EmpresaIF extends javax.swing.JFrame {
         jPanel1.getAccessibleContext().setAccessibleName("Crear empleado");
 
         jMenu1.setText("Empleado");
+
+        jmBuscarEmpleado.setText("Buscar por empleado");
+        jmBuscarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmBuscarEmpleadoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmBuscarEmpleado);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Empresa");
+
+        jmBuscarEmpresa.setText("Buscar por empresa");
+        jmBuscarEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmBuscarEmpresaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmBuscarEmpresa);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Sueldo");
@@ -294,10 +304,6 @@ public class EmpresaIF extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jcCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCategoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcCategoriaActionPerformed
-
     private void jtCrearEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCrearEmpresaActionPerformed
         try{
             
@@ -324,10 +330,6 @@ public class EmpresaIF extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jtCrearEmpresaActionPerformed
-
-    private void jcEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcEmpresaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcEmpresaActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         Empresa empresa = (Empresa) jcEmpresa.getSelectedItem();
@@ -361,6 +363,25 @@ public class EmpresaIF extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Debe ingresar numeros en los campos dni y sueldo");
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jmBuscarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmBuscarEmpresaActionPerformed
+    escritorio.removeAll();
+    escritorio.repaint();
+    VistaEmpresa ventanaEmer = new VistaEmpresa();
+    ventanaEmer.setVisible(true);
+    escritorio.add(ventanaEmer);
+    escritorio.moveToFront(ventanaEmer);
+      
+    }//GEN-LAST:event_jmBuscarEmpresaActionPerformed
+
+    private void jmBuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmBuscarEmpleadoActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+       VistaEmpleado ventanaEmer = new VistaEmpleado();
+        ventanaEmer.setVisible(true);
+        escritorio.add(ventanaEmer);
+        escritorio.moveToFront(ventanaEmer);
+    }//GEN-LAST:event_jmBuscarEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -441,6 +462,8 @@ public class EmpresaIF extends javax.swing.JFrame {
     private javax.swing.JButton jbGuardar;
     private javax.swing.JComboBox<Categoria> jcCategoria;
     private javax.swing.JComboBox<Empresa> jcEmpresa;
+    private javax.swing.JMenuItem jmBuscarEmpleado;
+    private javax.swing.JMenuItem jmBuscarEmpresa;
     private javax.swing.JButton jtCrearEmpresa;
     private javax.swing.JTextField jtCuit;
     private javax.swing.JTextField jtDocumento;

@@ -5,17 +5,29 @@
  */
 package sistemaempresa;
 
+import javax.swing.table.DefaultTableModel;
+import sistemaempresa.models.Empresa;
+
 /**
  *
  * @author Ivan
  */
-public class Empresa extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form Empresa
-     */
-    public Empresa() {
+public class VistaEmpresa extends javax.swing.JInternalFrame {
+        private DefaultTableModel modelo = new DefaultTableModel() {
+     
+        @Override
+        public boolean isCellEditable(int f, int c) {
+            
+            return false;
+            
+        }
+    };
+   
+        public VistaEmpresa() {
         initComponents();
+        crearCabecera();
+        cargarFilas();
+        
     }
 
     /**
@@ -28,10 +40,10 @@ public class Empresa extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtEmpresa = new javax.swing.JTable();
         jcListaempresas = new javax.swing.JComboBox<>();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtEmpresa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -42,7 +54,7 @@ public class Empresa extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtEmpresa);
 
         jcListaempresas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mondelez", "Arcor", "Niza", "Glucobil" }));
 
@@ -60,11 +72,11 @@ public class Empresa extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jcListaempresas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(14, 14, 14))
         );
 
         pack();
@@ -73,7 +85,26 @@ public class Empresa extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jcListaempresas;
+    private javax.swing.JTable jtEmpresa;
     // End of variables declaration//GEN-END:variables
+
+    private void crearCabecera(){
+        
+        modelo.addColumn("Nombre");
+        modelo.addColumn("CUIT");
+        jtEmpresa.setModel(modelo);
+    }
+    
+    private void cargarFilas(){
+       for(Empresa empresa : EmpresaIF.empresas){
+           modelo.addRow(new Object[]{empresa.getRazonSocial(),empresa.getCuit()});
+       }
+       
+       }
+        
+            
+            
+        
+    
 }
